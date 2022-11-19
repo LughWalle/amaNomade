@@ -1,4 +1,4 @@
-import NomadeProvider from '../components/context/nomadeProvider'
+import NomadeProvider from '../components/context/nomadeProvider.js'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {

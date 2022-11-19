@@ -1,5 +1,5 @@
 import { createContext } from "react";
 
-const Nomade = createContext();
+const NomadeContext = createContext();
 
-export default Nomade
+export default NomadeContext
