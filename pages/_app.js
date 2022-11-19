@@ -1,7 +1,13 @@
+import NomadeProvider from '../components/context/nomadeProvider'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+
+  return (
+    <NomadeProvider>
+      <Component {...pageProps} />
+    </NomadeProvider>
+  )
 }
 
 export default MyApp
