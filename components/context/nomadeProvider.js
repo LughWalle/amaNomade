@@ -1,17 +1,44 @@
-import Nomade from "./nomadeContext";
+import PropTypes from "prop-types";
+import NomadeContext from "./nomadeContext.js";
+import Amadeus from "amadeus"
+import { NEXT_PUBLIC_CLIENT_ID, NEXT_PUBLIC_CLIENT_SECRET } from "../../pages/config";
+import { useEffect, useState } from "react";
 
 const NomadeProvider = ({ children }) => {
-  
-  // funçoes de chamada de api
+  const amadeus = new Amadeus({
+    clientId: NEXT_PUBLIC_CLIENT_ID,
+    clientSecret: NEXT_PUBLIC_CLIENT_SECRET
+  });
+  const [info, setInfo] = useState([])
 
-  const data = {}
+  // funçoes de chamada de api
+  const getInfo = async () => {
+    const response = await amadeus.safety.safetyRatedLocations.bySquare.get({
+      north: 41.397158,
+      west: 2.160873,
+      south: 41.394582,
+      east: 2.177181
+    })
+    const data = JSON.parse(response.body).data[0]
+    console.log(data);
+    setInfo(data)
+  }
+  
+  //console.log(response.body)
+  useEffect(() => {
+    getInfo()
+  }, [])
+  
+  const data = {
+    info,
+  }
   return (
-    <Nomade.Provider value={data}>{children}</Nomade.Provider>
+    <NomadeContext.Provider value={data}>{children}</NomadeContext.Provider>
   );
 }
 
-NomadeProvider.protoTypes = {
-  children: protoTypes.node.isRequired,
+NomadeProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default NomadeProvider;
