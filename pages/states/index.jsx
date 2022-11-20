@@ -1,22 +1,35 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import NomadeContext from '../../components/context/nomadeContext'
 import styles from './styles.module.scss'
 import Favorite from '../../public/favorite.svg'
 import Bell from '../../public/bell.svg'
-import Safe from '../../public/section3.png'
-import Input from '../../components/InputText'
-import Card from '../../public/cardBairro.png'
+import InfoIcon from '../../public/infoIcon.svg'
+import CardB from '../../public/cardBairro.png'
 import Evaluation from '../../public/evaluation.png'
 import Image from 'next/image'
 import Button from '../../components/Button'
+import Card, { Content, Group, Paragraph, Title } from '../../components/Card'
+import ProgressBar from '../../components/ProgressBar'
 
 const States = () => {
-  const { info, indexInfor, setIndexInfor } = useContext(NomadeContext);
+  const { info, indexInfor, setIndexInfor,setProgress, progress } = useContext(NomadeContext);
 
-  const handleChange = (e) =>{
-    console.log("Fruit Selected!!", setIndexInfor(e.target.value) );
-    setIndexInfor(e.target.value)
+  const calcMedia = (id) => {
+    const keys = Object.keys(info[id].safetyScores)
+    const media = (keys.reduce((acc, curr) => {
+      return acc += info[id].safetyScores[curr]
+    }, 0)) / keys.length
+
+    setProgress(Math.round(media));
   }
+  const handleChange = ({ target }) => {
+    console.log("Fruit Selected!!", target.value);
+    calcMedia(target.value)
+    setIndexInfor(target.value)
+  }
+// useEffect(() => {
+//   calcMedia(0)
+// }, [info])
 
   const safetyScoresKeys = Object.keys(info[indexInfor].safetyScores)
   return (
@@ -37,7 +50,7 @@ const States = () => {
             } */}
 
             {info.map((element, index) => (
-              <option value={index}>{element.name}</option>
+              <option key={`${element.name}-key`} value={index}>{element.name}</option>
             ))}
           </select>
         </section>
@@ -64,15 +77,36 @@ const States = () => {
           </div>
         </section>
         <section className={styles.safe}>
-          <Image src={Safe} />
+          <Card>
+            <Title>
+              Níveis de perigo no local
+            </Title>
+            <Content>
+              <Group variant='spaceBetween'>
+                <Paragraph>Assalto</Paragraph>
+                <ProgressBar progress={info[indexInfor].safetyScores.theft} height={30} fixWidth={100} />
+              </Group>
+              <Group variant='spaceBetween'>
+                <Paragraph>Preconceito</Paragraph>
+                <ProgressBar progress={(info[indexInfor].safetyScores.women + info[indexInfor].safetyScores.lgbtq) / 2} height={30} fixWidth={100} />
+              </Group>
+            </Content>
+              <Button>Ver mais níveis</Button>
+          </Card>
+          <Card variant='alert_green' style={{backgroundColor: progress < 33.33 ? 'green' : progress >= 33.33 && progress <= 66.66 ? 'yellow' : 'red'}} Icon={InfoIcon}>
+            <Title>Nivel de segurança</Title>
+            <Content>
+              {progress}
+            </Content>
+          </Card>
         </section>
         <section className={styles.bairros} >
           <h1>
             Bairros
           </h1>
           <div className={styles.cards}>
-            <Image alt='desc' src={Card} />
-            <Image alt='desc' src={Card} />
+            <Image alt='desc' src={CardB} />
+            <Image alt='desc' src={CardB} />
           </div>
         </section>
         <section className={styles.rates}>

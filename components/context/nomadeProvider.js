@@ -14,6 +14,7 @@ const NomadeProvider = ({ children }) => {
   console.log('MOCKES_SAFETY', MOCKES_SAFETY)
   const [info, setInfo] = useState(MOCKES_SAFETY)
   const [indexInfor, setIndexInfor] = useState(0)
+  const [progress, setProgress] = useState(36)
   
 
   const getInfo = async () => {
@@ -35,7 +36,9 @@ const NomadeProvider = ({ children }) => {
   const data = {
     info,
     indexInfor,
-    setIndexInfor
+    setIndexInfor,
+    setProgress,
+    progress,
   }
   return (
     <NomadeContext.Provider value={data}>{children}</NomadeContext.Provider>
