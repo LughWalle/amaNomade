@@ -12,7 +12,9 @@ import Button from '../../components/Button'
 
 const States = () => {
   const { info } = useContext(NomadeContext);
-  const safetyScoresKeys = Object.keys(info.safetyScores)
+
+  console.log('info', info[0].safetyScores)
+  const safetyScoresKeys = Object.keys(info[0].safetyScores)
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -26,7 +28,7 @@ const States = () => {
         <section className={styles.location}>
           <div className={styles.infoCity}>
 
-            <h1>{info?.name}</h1>
+            <h1>{info[0]?.name}</h1>
             <div className={styles.options}>
               <div className={styles.rate}>
 
