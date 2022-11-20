@@ -1,0 +1,93 @@
+.container {
+  display: flex;
+  width: 42.8rem;
+
+  .content {
+    width: 100%;
+
+    .hero {
+      background-image: url('../../public/landscape-of-city-rio.png');
+      background-repeat: no-repeat;
+      border-radius: 0 0 1.5rem 1.5rem;
+      height: 31.5rem;
+      width: 100%;
+      padding-top: 20.7rem;
+      padding-inline: 2.5rem;
+    }
+
+    .location {
+      margin: 3.2rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+
+      .infoCity {
+        display: flex;
+        justify-content: space-between;
+        gap: 1.5rem;
+        text-align: center;
+
+        h1 {
+          font-size: 2.4rem;
+          font-weight: 500;
+          line-height: 2rem;
+        }
+
+        .options {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-size: 2.4rem;
+          font-weight: 500;
+          gap: 4rem;
+
+          .rate {
+            align-items: baseline;
+            display: flex;
+            font-size: 2.4rem;
+            font-weight: 500;
+
+            .rateTotal {
+              font-size: 1.4rem;
+              color: #B5B5B5;
+            }
+          }
+        }
+      }
+
+      .subtitle {
+        display: flex;
+        gap: 1.8rem;
+
+        p {
+          font-size: 1.6rem;
+          color: #898989;
+          ;
+        }
+      }
+    }
+    .safe {
+      text-align: center;
+    }
+    .bairros {
+      display: flex;
+      flex-direction: column;
+      padding: 2.5rem;
+      .cards {
+        display: flex;
+        gap: 1rem;
+      }
+    }
+    .rates {
+      display: flex;
+      flex-direction: column;
+      padding: 2.5rem;
+      gap: 1.6rem;
+      margin-bottom: 3.2rem;
+      .btns {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1.6rem;
+      }
+    }
+  }
+}

@@ -4,7 +4,6 @@ import NomadeContext from '../../components/context/nomadeContext'
 const Home = () => {
   const { info} = useContext(NomadeContext);
   
-  console.log('info', info)
   return (
     <div>
       <ul>
