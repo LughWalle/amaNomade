@@ -53,8 +53,8 @@ const States = () => {
             Bairros
           </h1>
           <div className={styles.cards}>
-            <Image src={Card} />
-            <Image src={Card} />
+            <Image alt='desc' src={Card} />
+            <Image alt='desc' src={Card} />
           </div>
         </section>
         <section className={styles.rates}>
@@ -68,7 +68,7 @@ const States = () => {
           <Button variant='third'>Fazer uma avaliação</Button>
         </section>
         <section className={styles.evaluation}>
-          <Image src={Evaluation} />
+          <Image alt='desc' src={Evaluation} />
         </section>
       </div>
     </div>

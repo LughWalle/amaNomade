@@ -22,7 +22,7 @@ const Input = ({
     onBlur,
     onKeyDown,
     onChange,
-}, ref) => {
+}) => {
   const handleOnBlur = event => {
     const { value } = event.target;
     onBlur && onBlur({ value, name, event });
@@ -77,9 +77,9 @@ const Input = ({
   })}>{label}</label> : null}
 
       {multi ? (
-        <textarea {..._props} ref={ref}></textarea>
+        <textarea {..._props}></textarea>
       ) : (
-        <input {..._props} type={type} ref={ref} />
+        <input {..._props} type={type}/>
       )}
 
       {helperText && helperText.length ? (
@@ -89,4 +89,4 @@ const Input = ({
   )
 }
 
-export default React.forwardRef((props, ref) => Input(props, ref));
+export default Input;
