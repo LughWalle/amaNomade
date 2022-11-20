@@ -9,26 +9,53 @@ const NomadeProvider = ({ children }) => {
     clientId: NEXT_PUBLIC_CLIENT_ID,
     clientSecret: NEXT_PUBLIC_CLIENT_SECRET
   });
-  const [info, setInfo] = useState([])
 
   // funçoes de chamada de api
+  const mock = {
+    type: "safety-rated-location",
+    id: "Q930402753",
+    self: {
+      type: "https://test.api.amadeus.com/v1/safety/safety-rated-locations/Q930402753",
+      methods: [
+        "GET"
+      ]
+    },
+    subType: "DISTRICT",
+    name: "La Dreta de l'Eixample (Barcelona)",
+    geoCode: {
+      "latitude": 41.3963097,
+      "longitude": 2.1653831
+    },
+    safetyScores: {
+      lgbtq: 37,
+      medical: 69,
+      overall: 44,
+      physicalHarm: 34,
+      politicalFreedom: 50,
+      theft: 42,
+      women: 33
+    }
+  }
+  const [info, setInfo] = useState(mock)
+
   const getInfo = async () => {
-    const response = await amadeus.safety.safetyRatedLocations.bySquare.get({
-      north: 41.397158,
-      west: 2.160873,
-      south: 41.394582,
-      east: 2.177181
+    let response = undefined
+    response = await amadeus.safety.safetyRatedLocations.get({
+      latitude: 41.397158,
+      longitude: 2.160873
     })
-    const data = JSON.parse(response.body).data[0]
-    console.log(data);
+    console.log(response);
+
+    const data = response ? JSON.parse(response.body).data[0] : mock
+
     setInfo(data)
   }
-  
-  //console.log(response.body)
+
   useEffect(() => {
     getInfo()
+
   }, [])
-  
+
   const data = {
     info,
   }
