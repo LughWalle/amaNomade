@@ -11,24 +11,40 @@ import Image from 'next/image'
 import Button from '../../components/Button'
 
 const States = () => {
-  const { info } = useContext(NomadeContext);
+  const { info, indexInfor, setIndexInfor } = useContext(NomadeContext);
 
-  console.log('info', info[0].safetyScores)
-  const safetyScoresKeys = Object.keys(info[0].safetyScores)
+  const handleChange = (e) =>{
+    console.log("Fruit Selected!!", setIndexInfor(e.target.value) );
+    setIndexInfor(e.target.value)
+  }
+
+  const safetyScoresKeys = Object.keys(info[indexInfor].safetyScores)
   return (
     <div className={styles.container}>
       <div className={styles.content}>
         <section className={styles.hero}>
-          <Input
+          {/* <Input
             type="text"
             placeholder="Search"
             name="typeText"
-          />
+          /> */}
+          <select value={indexInfor} onChange={handleChange} className={styles.select}>
+
+            {/* {
+              Object.entries(info).forEach(([k,v]) => (
+                <option value={k}>{v.name}</option>
+              ))
+            } */}
+
+            {info.map((element, index) => (
+              <option value={index}>{element.name}</option>
+            ))}
+          </select>
         </section>
         <section className={styles.location}>
           <div className={styles.infoCity}>
 
-            <h1>{info[0]?.name}</h1>
+            <h1>{info[indexInfor]?.name}</h1>
             <div className={styles.options}>
               <div className={styles.rate}>
 

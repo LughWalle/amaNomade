@@ -7,12 +7,14 @@ import { useEffect, useState } from "react";
 import MOCKES_SAFETY  from "../mockes/safetyRatedLocations"
 
 const NomadeProvider = ({ children }) => {
-  const amadeus = new Amadeus({
-    clientId: NEXT_PUBLIC_CLIENT_ID,
-    clientSecret: NEXT_PUBLIC_CLIENT_SECRET
-  });
+  // const amadeus = new Amadeus({
+  //   clientId: NEXT_PUBLIC_CLIENT_ID,
+  //   clientSecret: NEXT_PUBLIC_CLIENT_SECRET
+  // });
   console.log('MOCKES_SAFETY', MOCKES_SAFETY)
   const [info, setInfo] = useState(MOCKES_SAFETY)
+  const [indexInfor, setIndexInfor] = useState(0)
+  
 
   const getInfo = async () => {
     const response = await amadeus.safety.safetyRatedLocations.bySquare.get({
@@ -32,6 +34,8 @@ const NomadeProvider = ({ children }) => {
 
   const data = {
     info,
+    indexInfor,
+    setIndexInfor
   }
   return (
     <NomadeContext.Provider value={data}>{children}</NomadeContext.Provider>
