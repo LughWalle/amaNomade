@@ -1,11 +1,15 @@
 import NomadeProvider from '../components/context/nomadeProvider.js'
-import '../styles/globals.css'
+import Header from '../components/Header/index.jsx'
+import Layout from '../components/Layout/index.jsx'
+import '../styles/globals.scss'
 
 function MyApp({ Component, pageProps }) {
 
   return (
     <NomadeProvider>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </NomadeProvider>
   )
 }
