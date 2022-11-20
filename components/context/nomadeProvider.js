@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import NomadeContext from "./nomadeContext.js";
 import Amadeus from "amadeus"
-import { NEXT_PUBLIC_CLIENT_ID, NEXT_PUBLIC_CLIENT_SECRET } from "../../pages/config";
+import { NEXT_PUBLIC_CLIENT_ID, NEXT_PUBLIC_CLIENT_SECRET } from "../../config";
 import { useEffect, useState } from "react";
 
 const NomadeProvider = ({ children }) => {
