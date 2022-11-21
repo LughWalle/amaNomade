@@ -22,7 +22,6 @@
   }
   &.alert {
     text-align: center;
-    &_green {
       padding-top: 1rem;
       background-color: green;
       
@@ -36,6 +35,8 @@
       .content {
         font-size: 3.2rem;
       }
-    }
+  }
+  &.demo {
+    background-color: blue;
   }
 }

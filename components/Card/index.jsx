@@ -28,9 +28,9 @@ export const Group = ({ children, variant }) => {
 
 
 
-const Card = ({ children, variant, Icon, ...rest }) => {
+const Card = ({ children, variant, Icon, classname, ...rest }) => {
   return (
-    <div className={cx(styles.card, { [styles[variant]]: variant })} {...rest} >
+    <div className={cx(styles.card, classname, { [styles[variant]]: variant })} {...rest} >
       {Icon && <Icon className={styles.icon} />}
       {children}
     </div>

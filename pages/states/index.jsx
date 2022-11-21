@@ -10,6 +10,8 @@ import Image from 'next/image'
 import Button from '../../components/Button'
 import Card, { Content, Group, Paragraph, Title } from '../../components/Card'
 import ProgressBar from '../../components/ProgressBar'
+import 'bootstrap/dist/css/bootstrap.css';
+import Carousel from 'react-bootstrap/Carousel';
 
 const States = () => {
   const { info, indexInfor, setIndexInfor,setProgress, progress } = useContext(NomadeContext);
@@ -93,7 +95,7 @@ const States = () => {
             </Content>
               <Button>Ver mais níveis</Button>
           </Card>
-          <Card variant='alert_green' style={{backgroundColor: progress < 33.33 ? 'green' : progress >= 33.33 && progress <= 66.66 ? 'yellow' : 'red'}} Icon={InfoIcon}>
+          <Card variant='alert' style={{backgroundColor: progress < 33.33 ? 'green' : progress >= 33.33 && progress <= 66.66 ? 'yellow' : 'red'}} Icon={InfoIcon}>
             <Title>Nivel de segurança</Title>
             <Content>
               {progress}
