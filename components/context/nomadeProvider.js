@@ -11,7 +11,6 @@ const NomadeProvider = ({ children }) => {
   //   clientId: NEXT_PUBLIC_CLIENT_ID,
   //   clientSecret: NEXT_PUBLIC_CLIENT_SECRET
   // });
-  console.log('MOCKES_SAFETY', MOCKES_SAFETY)
   const [info, setInfo] = useState(MOCKES_SAFETY)
   const [indexInfor, setIndexInfor] = useState(0)
   const [progress, setProgress] = useState(36)

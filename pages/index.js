@@ -5,7 +5,6 @@ export default function Home() {
 
   
   const handleChange = (e) => {
-    console.log("Fruit Selected!!");
     this.setState({ fruit: e.target.value });
   }
 

@@ -25,7 +25,6 @@ const States = () => {
     setProgress(Math.round(media));
   }
   const handleChange = ({ target }) => {
-    console.log("Fruit Selected!!", target.value);
     calcMedia(target.value)
     setIndexInfor(target.value)
   }

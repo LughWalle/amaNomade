@@ -8,7 +8,6 @@ const Button = ({
   variant,
   ...rest
 }) => {
-  console.log(variant);
   return (
     <button
     className={cx(styles.button, { [styles[variant]]: variant })}
